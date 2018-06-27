@@ -11,15 +11,11 @@
 require 'rails_helper'
 
 RSpec.describe ExpenseType, type: :model do
-  subject { described_class.new }
-
-  it "is valid with valid attributes" do
-    subject.name = "Anything"
-    expect(subject).to be_valid
+  describe "Validations" do
+    it { is_expected.to validate_presence_of(:name) }   
   end
 
-  it "is not valid without a name" do
-    expect(subject).to_not be_valid
+  describe "Asossiations" do
+    it { should have_many(:expenses) }
   end
-
 end
