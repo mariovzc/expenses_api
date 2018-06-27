@@ -28,6 +28,12 @@ class User < ApplicationRecord
 
   has_many :expenses
 
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
+
+  private
+
   def downcase_email
     self.email = self.email.delete(' ').downcase
   end
